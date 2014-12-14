@@ -21,12 +21,10 @@
 
 
 
-                                <p:inputText type="hidden" id="professionalPKrut" value="#{professionalBean.newProfesioanl.professionalPK.rut}" title="Rut" styleClass="form-control input-md" required="true" requiredMessage="The Rut field is required."/>
-
-                                <p:inputText type="hidden" id="professionalPKdv" value="#{professionalBean.newProfesioanl.professionalPK.dv}" title="Dv" styleClass="form-control input-md" required="true" requiredMessage="The Dv field is required."/>
+                                <p:inputText type="hidden" id="professionalrut" value="#{professionalBean.rut}" title="Rut" />
 
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <p:outputLabel value="Nombres:" for="names" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
                                         <p:inputText id="names" value="#{professionalBean.newProfesioanl.names}" title="Names" styleClass="form-control input-md" />
@@ -76,7 +74,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                     <p:outputLabel value="Especialidad:" for="specialityid" styleClass="col-md-4 control-label" />
+                                    <p:outputLabel value="Especialidad:" for="specialityid" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
                                         <h:selectOneMenu id="specialityid" value="#{professionalBean.newProfesioanl.specialityid}" 
                                                          styleClass="form-control" required="true" converter="specialityConverter">
@@ -87,9 +85,9 @@
                                         </h:selectOneMenu>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
-                                      <p:outputLabel value="Rol" for="roleid" styleClass="col-md-4 control-label" />
+                                    <p:outputLabel value="Rol" for="roleid" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
                                         <h:selectOneMenu id="roleid" value="#{professionalBean.newProfesioanl.roleid}" 
                                                          styleClass="form-control" required="true" converter="roleConverter">
@@ -101,12 +99,12 @@
                                     </div>
                                 </div>
 
-                                
+
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label"></label>
                                     <div class="col-md-4">
-                                        <p:commandButton value="Guardar" actionListener="#{fixme}" update="growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Guardar" actionListener="#{professionalBean.editarProfesioanl()}" update="growl" styleClass="btn btn-success" />
                                         <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
                                     </div>
                                 </div>

@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../layouts/admisionista.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+                    <div id="content" style="margin-left: 0px !important;">
+                        <fieldset>
+                            <legend>Crear "nombre de página"</legend>
+                            <h:form styleClass="form-horizontal" id="" >
+                                <p:growl id="growl" showSummary="true" life="3000"  />  
+
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Dv:" for="personPK.dv" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="personRut" value="#{admisionistaBean.rut}" title="Rut" 
+                                                     styleClass="form-control input-md" required="true" 
+                                                     requiredMessage="El Rut Es Requerido"/>
+                                    </div>
+                                </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Nombres" for="names" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="names" value="#{admisionistaBean.person.names}" 
+                                                     title="Names" styleClass="form-control input-md"
+                                                     required="true" 
+                                                     requiredMessage="El Nombre"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Apellido Paterno" for="lastname" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="lastname" value="#{admisionistaBean.person.lastname}" 
+                                                     title="Apellido Paterno" styleClass="form-control input-md" required="true" 
+                                                     requiredMessage="El Apellido Paterno Es Requerido"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Secondlastname:" for="secondlastname" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="secondlastname" value="#{admisionistaBean.person.secondlastname}" title="Secondlastname" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Phone:" for="phone" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="phone" value="#{admisionistaBean.person.phone}" title="Phone" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Cellphone:" for="cellphone" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="cellphone" value="#{admisionistaBean.person.cellphone}" title="Cellphone" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Email:" for="email" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="email" value="#{admisionistaBean.person.email}" title="Email" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Address:" for="address" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="address" value="#{admisionistaBean.person.address}" title="Address" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Birthdate:" for="birthdate" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="birthdate" value="#{admisionistaBean.person.birthdate}" styleClass="form-control input-md" title="Birthdate" >
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </p:inputText>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Tipeprevid:" for="tipeprevid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:selectOneMenu id="tipeprevid" value="#{admisionistaBean.person.tipeprevid}" styleClass="form-control input-md" required="true" requiredMessage="The Tipeprevid field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{fixme}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Sexid:" for="sexid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:selectOneMenu id="sexid" value="#{admisionistaBean.person.sexid}" styleClass="form-control input-md" required="true" requiredMessage="The Sexid field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{fixme}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Religionid:" for="religionid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:selectOneMenu id="religionid" value="#{admisionistaBean.person.religionid}" styleClass="form-control input-md" required="true" requiredMessage="The Religionid field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{fixme}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Nativetownsid:" for="nativetownsid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:selectOneMenu id="nativetownsid" value="#{admisionistaBean.person.nativetownsid}" styleClass="form-control input-md" required="true" requiredMessage="The Nativetownsid field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{fixme}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Nationality:" for="nationality" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:selectOneMenu id="nationality" value="#{admisionistaBean.person.nationality}" styleClass="form-control input-md" required="true" requiredMessage="The Nationality field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{fixme}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Maritalstatusid:" for="maritalstatusid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:selectOneMenu id="maritalstatusid" value="#{admisionistaBean.person.maritalstatusid}" styleClass="form-control input-md" required="true" requiredMessage="The Maritalstatusid field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{fixme}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Elevelid:" for="elevelid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:selectOneMenu id="elevelid" value="#{admisionistaBean.person.elevelid}" styleClass="form-control input-md" required="true" requiredMessage="The Elevelid field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{fixme}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Communeid:" for="communeid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:selectOneMenu id="communeid" value="#{admisionistaBean.person.communeid}" styleClass="form-control input-md" required="true" requiredMessage="The Communeid field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{fixme}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="form-group">
+                                    <p:outputLabel value="Bgroupid:" for="bgroupid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <h:selectOneMenu  id="bgroupid" value="#{admisionistaBean.person.bgroupid}" 
+                                                          styleClass="form-control" required="true" converter="specialityConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{#}" 
+                                                           var="Speciality" itemLabel="#{Speciality.specialityname}"
+                                                           itemValue="#{Speciality}" />
+                                            <p:ajax process="@this" listener="#{personaBean.onersChangeSelect()}" event="change" 
+                                                    update=":formCreatePersona:tipoprevisionCodigo"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <p:commandButton value="Guardar" actionListener="#{fixme}" update="growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </fieldset>
+                    </div>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
