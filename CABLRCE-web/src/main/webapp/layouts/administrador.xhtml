@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Sistema Registro de Pacientes Hospitalizados</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link data-turbolinks-track="true" href="#{appBean.baseUrl}/resources/js/libs/bootstrap/css/estilo.css" media="all" rel="stylesheet" />
+        <script src="#{appBean.baseUrl}/resources/js/libs/jquery/wizard.js" type="text/javascript"></script>
+        <script src="#{appBean.baseUrl}/resources/js/libs/jquery/dash.js" type="text/javascript"></script>
+        <script src="#{appBean.baseUrl}/resources/js/app/menu.js" type="text/javascript"></script>
+    </h:head>
+
+    <h:body>
+        <div id="wrapper">
+            <div id="sidebar-default" class="main-sidebar fix-scroll">
+                <div class="current-user">
+                    <a href="#" class="name">
+                        <span>
+                            #{professionalBean.professional.names}
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">Configuración de la cuenta</a>
+                        </li>
+                        <li>
+                            <a href="#{appBean.baseUrl}/helpSupport.xhtml">Ayuda y Soporte</a>
+                        </li>
+                        <li>
+                            <h:form>
+                                <p:commandLink id="cerrarSesion"  actionListener="#{loginBean.logOut()}"
+                                               oncomplete="redirect(xhr, status, args)">
+                                    <h:outputText value="Cerrar Sesión"/>
+
+                                </p:commandLink>
+                            </h:form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-section">
+                    <h3>Administración</h3>
+                    <ul>
+                        <li class="option">
+                            <a href="#" data-toggle="sidebar">
+                                <i class="ion-gear-b"></i> <span>Configuración Sistema</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </a>
+                        </li>
+                        <li class="option">
+                            <a href="#" data-toggle="sidebar">
+                                <i class="ion-usb"></i> <span>Mant. Demograficos</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/Religiones.xhtml">
+                                        <i class="ion-medkit"></i><span>Religiones</span></a></li>
+                                <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/GrupoSanguineos.xhtml">
+                                        <i class="ion-medkit"></i><span>Grupo Sanguineo</span></a></li>
+                                <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/EducationalLevels.xhtml">
+                                        <i class="ion-medkit"></i><span>Nivel Educacional</span></a></li>
+                                <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/Religiones.xhtml">
+                                        <i class="ion-medkit"></i><span>Religiones</span></a></li>
+                                <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/Sexo.xhtml">
+                                        <i class="ion-medkit"></i><span>Sexos</span></a></li>
+                                <li><a href="#">Menu link</a></li>
+                                <li><a href="#">Extra link</a></li>
+                            </ul>
+                        </li>
+                        <li class="option">
+                            <a href="#" data-toggle="sidebar">
+                                <i class="ion-usb"></i> <span>Mantenedores CABL</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="#" data-toggle="sidebar">
+                                        Datos Profesionales
+                                        <i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/Roles.xhtml">
+                                                <i class="ion-medkit"></i><span>Roles</span></a></li>
+                                        <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/Units.xhtml">
+                                                <i class="ion-medkit"></i><span>Unidades</span></a></li>
+                                        <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/Specialities.xhtml">
+                                                <i class="ion-medkit"></i><span>Especialidades</span></a></li>
+                                        <li><a href="#{appBean.baseUrl2}/Mantenedores/CABL/Professionals.xhtml">
+                                                <i class="ion-medkit"></i><span>Profesionales</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Menu link</a></li>
+                                <li><a href="#">Extra link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+            <div id="content" name="content" class="left_content" style="padding: 0 !important;">
+                <ui:insert name="content"></ui:insert>
+            </div>
+        </div>
+
+
+    </h:body>
+
+</html>

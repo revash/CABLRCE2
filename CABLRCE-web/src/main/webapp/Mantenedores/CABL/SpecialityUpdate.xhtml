@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../layouts/administrador.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+                    <div id="content" style="margin-left: 0px !important;">
+                        <fieldset>
+                            <legend>Editar Unidad</legend>
+                            <h:form styleClass="form-horizontal" id="FormularioEditarUnidad" >
+                                <p:growl id="growl" showSummary="true" life="3000"  />  
+
+                                <p:inputText type="hidden" id="specialityid" value="#{specialityBean.speciality.specialityid}" title="Specialityid" />
+                                   
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Nombre Especialidad:" for="specialityname" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="specialityname" value="#{specialityBean.speciality.specialityname}" title="Specialityname" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                
+                                <div class="form-group">
+                                     <p:outputLabel value="Unidad:" for="unitid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <h:selectOneMenu id="unitid" value="#{specialityBean.speciality.unitid}" 
+                                                         styleClass="form-control" required="true" converter="unitConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{specialityBean.units}" 
+                                                           var="unidades" itemLabel="#{unidades.unitname}"
+                                                           itemValue="#{unidades}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <p:commandButton value="Guardar" actionListener="#{specialityBean.editSpeciality()}" update="growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </fieldset>
+                    </div>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

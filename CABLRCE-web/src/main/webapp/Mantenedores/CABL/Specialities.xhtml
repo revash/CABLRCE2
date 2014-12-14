@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../layouts/administrador.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <div id="content" style="margin-left:0px !important;">
+                        <h:form>
+                            <div class="menubar">
+                                <div class="sidebar-toggler visible-xs">
+                                    <i class="ion-navicon"></i>
+                                </div>
+                                <div class="page-title">
+                                    Especialidades
+                                </div>
+
+                            </div>
+                            <div class="content-wrapper">  
+                                <p:dataTable 
+                                    id="TablaEspecialidades"
+                                    value="#{specialityBean.specialities}" var="item" 
+                                    rows="10" paginator="true" 
+                                    paginatorPosition="bottom"
+                                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15"
+                                    widgetVar="tabla"
+                                    selectionMode="single"
+                                    selection="#{specialityBean.selectedSpeciality}"
+                                    rowKey="#{item.specialityid}"
+                                    filteredValue="#{specialityBean.filterSpecialities}"
+                                    emptyMessage="No se encontraron resultados">
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Buscar en todas las Columnas" />
+                                            <p:inputText id="globalFilter" onkeyup="PF('tabla').filter()" style="width:300px; text-transform: uppercase;" placeholder="Ingrese palabra"/>
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:column filterBy="#{item.specialityid}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Especialidad ID"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.specialityid}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.specialityname}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Nombre Especialidad"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.specialityname}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.unitid}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Unidad"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.unitid.unitname}"/>
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        <p:outputLabel value="Acciones"/>
+                                        <p:commandButton id="cmdAgregar" value="Agregar" styleClass="btn btn-default btn-xs"
+                                                         action="SpecialityCreate.xhtml"/>
+                                        <p:commandButton id="cmdEditar" value="Modificar" styleClass="btn btn-default btn-xs"
+                                                         action="SpecialityUpdate.xhtml">
+                                            <f:setPropertyActionListener value="#{specialityBean.selectedSpeciality}" target="#{specialityBean.speciality}" />         
+                                        </p:commandButton>
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </h:form>
+
+                    </div>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

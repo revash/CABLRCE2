@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../layouts/administrador.xhtml">
+
+            <ui:define name="content">
+
+                <f:view>
+
+                    <div id="content" style="margin-left: 0px !important;">
+                        <fieldset>
+                            <legend>Ingresar Profesional</legend>
+                            <h:form styleClass="form-horizontal" id="FormularioCreacionProfesional" >
+                                <p:growl id="growl" showSummary="true" life="3000"  />  
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Rut:" for="rut" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="rut" value="#{professionalBean.rut}" title="Rut" styleClass="form-control input-md" 
+                                                     required="true" requiredMessage="The Rut field is required.">
+                                            <p:ajax event="blur" update="growl" listener="#{professionalBean.onValidaRut()}"/>
+                                            <p:ajax event="blur" update="growl" listener="#{professionalBean.checkRutProExist()}"/>
+                                            <p:ajax event="blur" update="rut" listener="#{professionalBean.onFormateaRut()}"/>
+                                        </p:inputText>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Nombres:" for="names" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="names" value="#{professionalBean.newProfesioanl.names}" title="Names" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Apellido Paterno" for="lastname" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="lastname" value="#{professionalBean.newProfesioanl.lastname}" title="Lastname" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Apellido Materno" for="secondlastname" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="secondlastname" value="#{professionalBean.newProfesioanl.secondlastname}" title="Secondlastname" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Telefono:" for="phone" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="phone" value="#{professionalBean.newProfesioanl.phone}" title="Phone" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Celular: " for="cellphone" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="cellphone" value="#{professionalBean.newProfesioanl.cellphone}" title="Cellphone" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Email:" for="email" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="email" value="#{professionalBean.newProfesioanl.email}" title="Email" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Contraseña: " for="password" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:password id="password" value="#{professionalBean.newProfesioanl.password}" title="Password" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                     <p:outputLabel value="Especialidad:" for="specialityid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <h:selectOneMenu id="specialityid" value="#{professionalBean.newProfesioanl.specialityid}" 
+                                                         styleClass="form-control" required="true" converter="specialityConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{professionalBean.specialities}" 
+                                                           var="Speciality" itemLabel="#{Speciality.specialityname}"
+                                                           itemValue="#{Speciality}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                      <p:outputLabel value="Rol" for="roleid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <h:selectOneMenu id="roleid" value="#{professionalBean.newProfesioanl.roleid}" 
+                                                         styleClass="form-control" required="true" converter="roleConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{professionalBean.roles}" 
+                                                           var="roles" itemLabel="#{roles.rolename}"
+                                                           itemValue="#{roles}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <p:commandButton value="Guardar" actionListener="#{professionalBean.crearProfesioanl()}" update="growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </fieldset>
+                    </div>
+                </f:view>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

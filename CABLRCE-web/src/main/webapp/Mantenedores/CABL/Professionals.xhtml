@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../layouts/administrador.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <div id="content" style="margin-left:0px !important;">
+                        <h:form>
+                            <div class="menubar">
+                                <div class="sidebar-toggler visible-xs">
+                                    <i class="ion-navicon"></i>
+                                </div>
+                                <div class="page-title">
+                                    Lista de Profesionales
+                                </div>
+
+                            </div>
+                            <div class="content-wrapper">  
+                                <p:dataTable 
+                                    id="TablaProfesionales"
+                                    value="#{professionalBean.professionals}" var="item" 
+                                    rows="10" paginator="true" 
+                                    paginatorPosition="bottom"
+                                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15"
+                                    widgetVar="tabla"
+                                    selectionMode="single"
+                                    selection="#{professionalBean.selectedProfessional}"
+                                    rowKey="#{item.professionalPK}"
+                                    filteredValue="#{professionalBean.filterProfessionals}"
+                                    emptyMessage="No se encontraron resultados">
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Buscar en todas las Columnas" />
+                                            <p:inputText id="globalFilter" onkeyup="PF('tabla').filter()" style="width:300px; text-transform: uppercase;" placeholder="Ingrese palabra"/>
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:column filterBy="#{item.professionalPK.rut}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Rut"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.professionalPK.rut}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.professionalPK.dv}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Dv"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.professionalPK.dv}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.names}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Names"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.names}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.lastname}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Lastname"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.lastname}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.secondlastname}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Secondlastname"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.secondlastname}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.specialityid}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Specialityid"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.specialityid.specialityname}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.roleid}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Roleid"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.roleid.rolename}"/>
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        <p:outputLabel value="Acciones"/>
+                                        <p:commandButton id="cmdAgregar" value="Agregar" styleClass="btn btn-default btn-xs"
+                                                         action="ProfessionalCreate.xhtml"/>
+                                        <p:commandButton id="cmdEditar" value="Modificar" styleClass="btn btn-default btn-xs"
+                                            action="ProfessionalUpdate.xhtml">
+                                            <f:setPropertyActionListener value="#{professionalBean.selectedProfessional}" target="#{professionalBean.newProfesioanl}" />                                                          </p:commandButton>
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </h:form>
+
+                    </div>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
