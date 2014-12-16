@@ -16,4 +16,8 @@ public interface BussinesFacadeLocal2 {
     public boolean existeReligionId(Integer id);
     public boolean existeGrupoSanguineoId(Integer id);
     public boolean existeNivelEducacionalId(Integer id);
+    public boolean existePrevisionId(Integer id);
+    public boolean existeTipoPrevisionId(Integer id);
+    public boolean existeNacionalidadId(Integer id);
+    public boolean existeControlMedicoId(Integer id);
 }

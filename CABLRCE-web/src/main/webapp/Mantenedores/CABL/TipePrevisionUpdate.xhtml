@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../layouts/administrador.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+                    <div id="content" style="margin-left: 0px !important;">
+                        <fieldset>
+                            <legend> Modificar Tipo de Prevision</legend>
+                            <h:form styleClass="form-horizontal" id="" >
+                                <p:growl id="growl" showSummary="true" life="3000"  />  
+
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Tipeprevid:" for="tipeprevid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="tipeprevid" value="#{tipePrevisionBean.tipoPrevision.tipeprevid}" title="Tipeprevid" styleClass="form-control input-md" required="true" requiredMessage="The Tipeprevid field is required."/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Tipeprevdesc:" for="tipeprevdesc" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="tipeprevdesc" value="#{tipePrevisionBean.tipoPrevision.tipeprevdesc}" title="Tipeprevdesc" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Previd:" for="previd" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                           <h:selectOneMenu id="previd" value="#{tipePrevisionBean.tipoPrevision.previd}"
+                                                         styleClass="form-control" required="true" converter="previsionConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{tipePrevisionBean.previsiones}" 
+                                                           var="Prevision" itemLabel="#{Prevision.prevdescription}"
+                                                           itemValue="#{Prevision}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <p:commandButton value="Guardar" actionListener="#{tipePrevisionBean.editTipoPrevisiones}" update="growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Cancelar" onclick="volver('#{appBean.baseUrl}/Mantenedores/CABL/TipePrevisiones.xhtml');" styleClass="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </fieldset>
+                    </div></f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

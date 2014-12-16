@@ -43,6 +43,34 @@ public class BussinesFacade2 implements BussinesFacadeLocal2{
         q.setParameter("id", id);
         return q.getResultList().isEmpty();
     }
+
+    @Override
+    public boolean existePrevisionId(Integer id) {
+        Query q = em.createQuery("SELECT r FROM Prevision r WHERE r.previd = :id");
+        q.setParameter("id", id);
+        return q.getResultList().isEmpty();
+    }
+
+    @Override
+    public boolean existeTipoPrevisionId(Integer id) {
+        Query q = em.createQuery("SELECT r FROM Tipeprevision r WHERE r.tipeprevid = :id");
+        q.setParameter("id", id);
+        return q.getResultList().isEmpty();
+    }
+
+    @Override
+    public boolean existeNacionalidadId(Integer id) {
+         Query q = em.createQuery("SELECT r FROM Nationality r WHERE r.nationalityid = :id");
+        q.setParameter("id", id);
+        return q.getResultList().isEmpty();
+    }
+
+    @Override
+    public boolean existeControlMedicoId(Integer id) {
+         Query q = em.createQuery("SELECT r FROM Mediccontrol r WHERE r.controlid = :id");
+        q.setParameter("id", id);
+        return q.getResultList().isEmpty();
+    }
     
     
    

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../layouts/administrador.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <div id="content" style="margin-left:0px !important;">
+                        <h:form>
+                            <div class="menubar">
+                                <div class="sidebar-toggler visible-xs">
+                                    <i class="ion-navicon"></i>
+                                </div>
+                                <div class="page-title">
+                                    Nacionalidades
+                                </div>
+
+                            </div>
+                            <div class="content-wrapper">  
+                                <p:dataTable 
+                                    id="NacionalidadTable"
+                                    value="#{nationalityBean.nacionalidades}" var="item" 
+                                    rows="10" paginator="true" 
+                                    paginatorPosition="bottom"
+                                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15"
+                                    widgetVar="tabla"
+                                    selectionMode="single"
+                                    selection="#{nationalityBean.selectedNacionalidad}"
+                                    rowKey="#{item.nationalityid}"
+                                    filteredValue="#{nationalityBean.filterNacionalidad}"
+                                    emptyMessage="No se encontraron resultados">
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Buscar en todas las Columnas" />
+                                            <p:inputText id="globalFilter" onkeyup="PF('tabla').filter()" style="width:300px; text-transform: uppercase;" placeholder="Ingrese palabra"/>
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:column filterBy="#{item.nationalityid}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Nationalityid"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nationalityid}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.nationalityname}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Nationalityname"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nationalityname}"/>
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        <p:outputLabel value="Acciones"/>
+                                        <p:commandButton id="cmdAgregar" value="Agregar" styleClass="btn btn-default btn-xs"
+                                                         action="NacionalidadCreate.xhtml"/>
+                                       <p:commandButton id="cmdEditar" value="Modificar" styleClass="btn btn-default btn-xs"
+                                                         action="NacionalidadUpdate.xhtml">
+                                           <f:setPropertyActionListener value="#{nationalityBean.selectedNacionalidad}" target="#{nationalityBean.nacionalidad}" />         
+                                        </p:commandButton>
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </h:form>
+
+                    </div></f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
