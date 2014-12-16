@@ -8,12 +8,10 @@
 
     <body>
 
-        <ui:composition template="./../../layouts/administrador.xhtml">
+        <ui:composition template="./../../layouts/admisionista.xhtml">
 
             <ui:define name="content">
                 <f:view>
-
-
                     <div id="content" style="margin-left:0px !important;">
                         <h:form>
                             <div class="menubar">
@@ -21,23 +19,23 @@
                                     <i class="ion-navicon"></i>
                                 </div>
                                 <div class="page-title">
-                                    Lista de Profesionales
+                                    Lista Personas
                                 </div>
 
                             </div>
                             <div class="content-wrapper">  
                                 <p:dataTable 
-                                    id="TablaProfesionales"
-                                    value="#{professionalBean.professionals}" var="item" 
+                                    id="TablaPersonasAdmisionista"
+                                    value="#{admisionistaBean.persons}" var="item" 
                                     rows="10" paginator="true" 
                                     paginatorPosition="bottom"
                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                     rowsPerPageTemplate="5,10,15"
                                     widgetVar="tabla"
                                     selectionMode="single"
-                                    selection="#{professionalBean.selectedProfessional}"
-                                    rowKey="#{item.professionalPK}"
-                                    filteredValue="#{professionalBean.filterProfessionals}"
+                                    selection="#{admisionistaBean.selectedPerson}"
+                                    rowKey="#{item.personPK}"
+                                    filteredValue="#{admisionistaBean.filterPersons}"
                                     emptyMessage="No se encontraron resultados">
                                     <f:facet name="header">
                                         <p:outputPanel>
@@ -45,17 +43,11 @@
                                             <p:inputText id="globalFilter" onkeyup="PF('tabla').filter()" style="width:300px; text-transform: uppercase;" placeholder="Ingrese palabra"/>
                                         </p:outputPanel>
                                     </f:facet>
-                                    <p:column filterBy="#{item.professionalPK.rut}">
+                                    <p:column filterBy="#{item.personPK.rut}">
                                         <f:facet name="header">
                                             <h:outputText value="Rut"/>
                                         </f:facet>
-                                        <h:outputText value="#{item.professionalPK.rut}"/>
-                                    </p:column>
-                                    <p:column filterBy="#{item.professionalPK.dv}">
-                                        <f:facet name="header">
-                                            <h:outputText value="Dv"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.professionalPK.dv}"/>
+                                        <h:outputText value="#{item.personPK.rut}-#{item.personPK.dv}"/>
                                     </p:column>
                                     <p:column filterBy="#{item.names}">
                                         <f:facet name="header">
@@ -75,29 +67,52 @@
                                         </f:facet>
                                         <h:outputText value="#{item.secondlastname}"/>
                                     </p:column>
-                                    <p:column filterBy="#{item.specialityid}">
+                                    <p:column filterBy="#{item.phone}">
                                         <f:facet name="header">
-                                            <h:outputText value="Specialityid"/>
+                                            <h:outputText value="Phone"/>
                                         </f:facet>
-                                        <h:outputText value="#{item.specialityid.specialityname}"/>
+                                        <h:outputText value="#{item.phone}"/>
                                     </p:column>
-                                    <p:column filterBy="#{item.roleid}">
+                                    <p:column filterBy="#{item.cellphone}">
                                         <f:facet name="header">
-                                            <h:outputText value="Roleid"/>
+                                            <h:outputText value="Cellphone"/>
                                         </f:facet>
-                                        <h:outputText value="#{item.roleid.rolename}"/>
+                                        <h:outputText value="#{item.cellphone}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.birthdate}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Birthdate"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.birthdate}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column filterBy="#{item.tipeprevid.previd.prevdescription}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Tipeprevid"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.tipeprevid.previd.prevdescription}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.nationality}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Nationality"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nationality.nationalityname}"/>
+                                    </p:column>
+                                    
+                                    <p:column filterBy="#{item.bgroupid.bgroupdesc}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Bgroupid"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.bgroupid.bgroupdesc}"/>
                                     </p:column>
 
                                     <f:facet name="footer">
                                         <p:outputLabel value="Acciones"/>
                                         <p:commandButton id="cmdAgregar" value="Agregar" styleClass="btn btn-default btn-xs"
-                                                         action="ProfessionalCreate.xhtml"/>
+                                                         action="PersonaCreate.xhtml"/>
                                         <p:commandButton id="cmdEditar" value="Modificar" styleClass="btn btn-default btn-xs"
-                                            action="ProfessionalUpdate.xhtml">
-                                            <f:setPropertyActionListener value="#{professionalBean.selectedProfessional}" target="#{professionalBean.newProfesioanl}" />
-                                            <f:setPropertyActionListener value="#{professionalBean.selectedProfessional.professionalPK.rut}#{professionalBean.selectedProfessional.professionalPK.dv}" 
-                                                                         target="#{professionalBean.rut}" />
-                                        </p:commandButton>
+                                                         action="PersonaEdit.xhtml"/>
                                     </f:facet>
                                 </p:dataTable>
                             </div>

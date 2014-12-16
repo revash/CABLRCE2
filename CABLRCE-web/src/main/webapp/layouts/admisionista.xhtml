@@ -2,24 +2,84 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <title>Sistema Registro de Pacientes Hospitalizados</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link data-turbolinks-track="true" href="#{appBean.baseUrl}/resources/js/libs/bootstrap/css/estilo.css" media="all" rel="stylesheet" />
+        <script src="#{appBean.baseUrl}/resources/js/libs/jquery/wizard.js" type="text/javascript"></script>
+        <script src="#{appBean.baseUrl}/resources/js/libs/jquery/dash.js" type="text/javascript"></script>
+        <script src="#{appBean.baseUrl}/resources/js/app/menu.js" type="text/javascript"></script>
     </h:head>
 
     <h:body>
+        <div id="wrapper">
+            <div id="sidebar-default" class="main-sidebar fix-scroll">
+                <div class="current-user">
+                    <a href="#" class="name">
+                        <span>
+                            #{professionalBean.professional.names}
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">Configuración de la cuenta</a>
+                        </li>
+                        <li>
+                            <a href="#{appBean.baseUrl}/helpSupport.xhtml">Ayuda y Soporte</a>
+                        </li>
+                        <li>
+                            <h:form>
+                                <p:commandLink id="cerrarSesion"  actionListener="#{loginBean.logOut()}"
+                                               oncomplete="redirect(xhr, status, args)">
+                                    <h:outputText value="Cerrar Sesión"/>
 
-        <div id="top" class="top">
-            <ui:insert name="top">Top</ui:insert>
+                                </p:commandLink>
+                            </h:form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-section">
+                    <ul>
+                        <li class="option">
+                            <a href="#" data-toggle="sidebar">
+                                <i class="ion-usb"></i> <span>Admision</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="#" data-toggle="sidebar">
+                                        Datos Profesionales
+                                        <i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="#{appBean.baseUrl2}/Admisionista/Persona/Personas.xhtml">
+                                                <i class="ion-medkit"></i><span>Lista Personas</span></a></li>
+                                        <li><a href="#{appBean.baseUrl2}/Admisionista/Persona/PersonaCreate.xhtml">
+                                                <i class="ion-medkit"></i><span>Agregar Persona</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Menu link</a></li>
+                                <li><a href="#">Extra link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+            <div id="content" name="content" class="left_content" style="padding: 0 !important;">
+                <ui:insert name="content"></ui:insert>
+            </div>
         </div>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Admisionista</ui:insert>
-        </div>
 
     </h:body>
 

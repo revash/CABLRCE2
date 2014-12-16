@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../layouts/admisionista.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+                    <div id="content" style="margin-left: 0px !important;">
+                        <fieldset>
+                            <legend>Datos Persona</legend>
+                            <h:form role="form" id="FormularioCrearPersona">
+                                <p:growl id="growl" showSummary="true" life="3000"  />  
+
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <legend>Datos Personales</legend>
+                                        <div class="form-group">
+                                            <p:outputLabel value="Rut" for="personRut"  />
+                                            <p:inputText id="personRut" value="#{admisionistaBean.rut}" title="Rut" 
+                                                         styleClass="form-control" required="true" 
+                                                         requiredMessage="El Rut Es Requerido"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Nombres" for="names"/>
+                                            <p:inputText id="names" value="#{admisionistaBean.person.names}" 
+                                                         title="Names" styleClass="form-control"
+                                                         required="true" 
+                                                         requiredMessage="El Nombre"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Apellido Paterno" for="lastname" />
+                                            <p:inputText id="lastname" value="#{admisionistaBean.person.lastname}" 
+                                                         title="Apellido Paterno" styleClass="form-control" required="true" 
+                                                         requiredMessage="El Apellido Paterno Es Requerido"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Apellido Materno" for="secondlastname" />
+                                            <p:inputText id="secondlastname" value="#{admisionistaBean.person.secondlastname}" title="Secondlastname" styleClass="form-control" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Telefono" for="phone" />
+                                            <p:inputText id="phone" value="#{admisionistaBean.person.phone}" title="Phone" styleClass="form-control" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Calular" for="cellphone" />
+                                            <p:inputText id="cellphone" value="#{admisionistaBean.person.cellphone}" title="Cellphone" styleClass="form-control" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Email" for="email" />
+                                            <p:inputText id="email" value="#{admisionistaBean.person.email}" title="Email" styleClass="form-control" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Direccion" for="address" />
+                                            <p:inputText id="address" value="#{admisionistaBean.person.address}" title="Address" styleClass="form-control"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Fecha de Nacimiento" for="birthdate"/>
+                                            <p:inputText id="birthdate" value="#{admisionistaBean.person.birthdate}" title="Birthdate" styleClass="form-control" >
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </p:inputText>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <legend>Prevision</legend>
+                                        <div class="form-group">
+                                            <p:outputLabel value="Prevision" for="prevision" />
+                                            <h:selectOneMenu  id="prevision" value="#{admisionistaBean.prevision}"
+                                                              styleClass="form-control" required="true" converter="previsionConverter">
+                                                <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{admisionistaBean.previsiones}" 
+                                                               var="prevision" itemLabel="#{prevision.prevdescription}"
+                                                               itemValue="#{prevision}" />
+                                            </h:selectOneMenu>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Tipo Prevision" for="tipeprevid" />
+                                            <h:selectOneMenu  id="tipeprevid" value="#{admisionistaBean.person.tipeprevid}"
+                                                              styleClass="form-control" required="true" converter="tipePrevisionConverter">
+                                                <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{admisionistaBean.tipoPrevisiones}" 
+                                                               var="tipeprevid" itemLabel="#{tipeprevid.tipeprevdesc}"
+                                                               itemValue="#{tipeprevid}" />
+                                            </h:selectOneMenu>
+                                        </div>
+
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Sexo</legend>
+                                        <div class="form-group">
+                                            <p:outputLabel value="Sexo" for="sexid" />
+                                            <h:selectOneMenu  id="sexid" value="#{admisionistaBean.person.sexid}"
+                                                              styleClass="form-control" required="true" converter="sexConverter">
+                                                <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{admisionistaBean.sexos}" 
+                                                               var="sexos" itemLabel="#{sexos.sexdescription}"
+                                                               itemValue="#{sexos}" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Datos Demograficos</legend>
+                                        <div class="form-group">
+                                            <p:outputLabel value="Nacionalidad" for="nationality"/>
+                                            <h:selectOneMenu  id="nationality" value="#{admisionistaBean.person.nationality}"
+                                                              styleClass="form-control" required="true" converter="nationalityConverter">
+                                                <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{admisionistaBean.nacionalidades}" 
+                                                               var="nacionalidades" itemLabel="#{nacionalidades.nationalityname}"
+                                                               itemValue="#{nacionalidades}" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group">
+                                           <p:outputLabel value="Region" for="Region" />
+                                           <h:selectOneMenu  id="Region" value="#{admisionistaBean.region}"
+                                                              styleClass="form-control" required="true" converter="regionConverter">
+                                                <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{admisionistaBean.regiones}" 
+                                                               var="Region" itemLabel="#{Region.name}"
+                                                               itemValue="#{Region}" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group">
+                                           <p:outputLabel value="Ciudad" for="Ciudad" />
+                                           <h:selectOneMenu  id="Ciudad" value="#{admisionistaBean.city}"
+                                                              styleClass="form-control" required="true" converter="citiConverter">
+                                                <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{admisionistaBean.ciudades}" 
+                                                               var="Ciudad" itemLabel="#{Ciudad.cityname}"
+                                                               itemValue="#{Ciudad}" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group">
+                                           <p:outputLabel value="Comuna" for="communeid" />
+                                            <h:selectOneMenu  id="communeid" value="#{admisionistaBean.person.communeid}"
+                                                              styleClass="form-control" required="true" converter="CommuneConverter">
+                                                <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{admisionistaBean.comunas}" 
+                                                               var="communeid" itemLabel="#{communeid.communename}"
+                                                               itemValue="#{communeid}" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group">
+                                        <p:outputLabel value="Religion" for="religionid" />
+                                        <h:selectOneMenu  id="religionid" value="#{admisionistaBean.person.religionid}"
+                                                          styleClass="form-control" required="true" converter="religionConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{admisionistaBean.religiones}" 
+                                                           var="religiones" itemLabel="#{religiones.religionname}"
+                                                           itemValue="#{religiones}" />
+                                        </h:selectOneMenu>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <p:outputLabel value="Estado Civil" for="maritalstatusid"/>
+                                        <h:selectOneMenu  id="maritalstatusid" value="#{admisionistaBean.person.maritalstatusid}"
+                                                          styleClass="form-control" required="true" converter="maritalStatusConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{admisionistaBean.estadoCivil}" 
+                                                           var="estadoCivil" itemLabel="#{estadoCivil.maritalstatusname}"
+                                                           itemValue="#{estadoCivil}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel value="Pueblo Originario" for="nativetownsid"/>
+                                        <h:selectOneMenu  id="nativetownsid" value="#{admisionistaBean.person.nativetownsid}"
+                                                          styleClass="form-control" required="true" converter="nativeTownsConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{admisionistaBean.pueblosOriginarios}" 
+                                                           var="pueblosOriginarios" itemLabel="#{pueblosOriginarios.nativetownsname}"
+                                                           itemValue="#{pueblosOriginarios}" />
+                                        </h:selectOneMenu>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p:outputLabel value="Nivel de Educacion" for="elevelid"  />
+                                        <h:selectOneMenu  id="elevelid" value="#{admisionistaBean.person.elevelid}" 
+                                                          styleClass="form-control" required="true" converter="educationalLevelConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{admisionistaBean.eduLevel}" 
+                                                           var="educacion" itemLabel="#{educacion.eleveldesc}"
+                                                           itemValue="#{educacion}" />
+                                        </h:selectOneMenu>
+                                    </div>
+
+
+
+
+                                    <div class="form-group">
+                                        <p:outputLabel value="Grupo Sanguineo" for="bgroupid"  />
+
+                                        <h:selectOneMenu  id="bgroupid" value="#{admisionistaBean.person.bgroupid}" 
+                                                          styleClass="form-control" required="true" converter="bloodGroupConverter">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{admisionistaBean.gurpoSanguineo}" 
+                                                           var="grupoSangineo" itemLabel="#{grupoSangineo.bgroupdesc}"
+                                                           itemValue="#{grupoSangineo}" />
+                                        </h:selectOneMenu>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <p:commandButton value="Guardar" actionListener="#{fixme}" update="growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </fieldset>
+                    </div>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

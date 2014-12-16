@@ -57,7 +57,7 @@ public class ProfessionalBean {
     private List<Unit> units;
     private List<Speciality> specialities;
     private boolean btnGuardar;
-
+    private ProfessionalPK profPk;
     public ProfessionalBean() {
         bussinesFacade = new BussinesFacade();
         professionalFacade = new ProfessionalFacade();
@@ -156,7 +156,7 @@ public class ProfessionalBean {
         clave = sha256(newProfesioanl.getPassword());
         newProfesioanl.setPassword(clave);
         newProfesioanl.setAddress("");
-        ProfessionalPK profPk = new ProfessionalPK(Integer.parseInt(rut1), dv2);
+        profPk = new ProfessionalPK(Integer.parseInt(rut1), dv2);
         newProfesioanl.setProfessionalPK(profPk);
         if (appBean.validarRut(rut1, dv2)) {
             if (bussinesFacade.existeProfesioanlByPK(profPk)) {
@@ -182,20 +182,13 @@ public class ProfessionalBean {
         clave = sha256(newProfesioanl.getPassword());
         newProfesioanl.setPassword(clave);
         newProfesioanl.setAddress("");
-        ProfessionalPK profPk = new ProfessionalPK(Integer.parseInt(rut1), dv2);
+        profPk = new ProfessionalPK(Integer.parseInt(rut1), dv2);
         newProfesioanl.setProfessionalPK(profPk);
-        if (appBean.validarRut(rut1, dv2)) {
-            if (bussinesFacade.existeProfesioanlByPK(profPk)) {
-                professionalFacade.create(newProfesioanl);
-                professionals = professionalFacade.findAll();
-                String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/Mantenedores/CABL/Professionals.xhtml"));
-                extContext.redirect(url);
-            } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rut ya Registrado", "Rut Invalido"));
-            }
-        } else {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rut no valido", "Rut Invalido"));
-        }
+        professionalFacade.edit(newProfesioanl);
+        professionals = professionalFacade.findAll();
+        String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/Mantenedores/CABL/Professionals.xhtml"));
+        extContext.redirect(url);
+            
     }
 
 //get y set
@@ -301,6 +294,14 @@ public class ProfessionalBean {
 
     public void setRut2(String rut2) {
         this.rut2 = rut2;
+    }
+
+    public ProfessionalPK getProfPk() {
+        return profPk;
+    }
+
+    public void setProfPk(ProfessionalPK profPk) {
+        this.profPk = profPk;
     }
 
 }

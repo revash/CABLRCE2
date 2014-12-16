@@ -17,7 +17,7 @@ import javax.faces.convert.FacesConverter;
  *
  * @author AndresEduardo
  */
-@FacesConverter(value = "cityConverter", forClass = City.class)
+@FacesConverter(value = "citiConverter", forClass = City.class)
 public class citiConverter implements Converter{
 
     @Override
@@ -34,7 +34,7 @@ public class citiConverter implements Converter{
         if (arg2 == null || arg2.equals("")) {
             return "";
         } else {
-            return String.valueOf(((City) arg2).getCode());
+            return String.valueOf(((City) arg2).getCityid());
         }
     }
     
