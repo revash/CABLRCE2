@@ -298,7 +298,7 @@ public class AdmisionistaBean {
         System.out.println("seteo paramaetro 4");
         schedulingFacade.create(schudling);
         System.out.println("seteo Guardo 1");
-        String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/Admisionista/Persona/BuscarPacienteParaAgendar.xhtml"));
+        String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/Admisionista/Persona/ListaAgenda.xhtml"));
         extContext.redirect(url);
 
     }

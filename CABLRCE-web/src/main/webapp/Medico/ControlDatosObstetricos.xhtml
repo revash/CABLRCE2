@@ -18,67 +18,44 @@
                             <legend>Datos Obstetricos</legend>
                             <p:growl id="growl" showSummary="true" life="3000"  />  
                             <h:form styleClass="form-horizontal" id="FormCreacionDatosObstetricos" >
-                               
-                                <div class="form-group">
-                                    <p:outputLabel value="Personnationality:" for="obstetricdataPKpersonnationality" styleClass="col-md-4 control-label" />
-                                    <div class="col-md-4">
-                                        <p:inputText id="obstetricdataPKpersonnationality" value="#{medicoBean.datosObstetricos.obstetricdataPK.personnationality}" title="Personnationality" styleClass="form-control input-md" required="true" requiredMessage="The Personnationality field is required."/>
-                                    </div>
-                                </div>
 
+                                <p:inputText type="hidden" id="obstetricdataPKpersonnationality" value="#{medicoBean.datosObstetricos.obstetricdataPK.personnationality}" title="Personnationality" styleClass="form-control input-md" required="true" requiredMessage="The Personnationality field is required."/>
+                                <p:inputText type="hidden"  id="obstetricdataPKpersonrut" value="#{medicoBean.datosObstetricos.obstetricdataPK.personrut}" title="Personrut" styleClass="form-control input-md" required="true" requiredMessage="The Personrut field is required."/>
+                                <p:inputText type="hidden"  id="obstetricdataPKpersondv" value="#{medicoBean.datosObstetricos.obstetricdataPK.persondv}" title="Persondv" styleClass="form-control input-md" required="true" requiredMessage="The Persondv field is required."/>
+                                <p:inputText type="hidden" id="obstetricdataPKrecordnumber" value="#{medicoBean.datosObstetricos.obstetricdataPK.recordnumber}" title="Recordnumber" styleClass="form-control input-md" required="true" requiredMessage="The Recordnumber field is required."/>
+                           
                                 <div class="form-group">
-                                    <p:outputLabel value="Personrut:" for="obstetricdataPKpersonrut" styleClass="col-md-4 control-label" />
-                                    <div class="col-md-4">
-                                        <p:inputText id="obstetricdataPKpersonrut" value="#{medicoBean.datosObstetricos.obstetricdataPK.personrut}" title="Personrut" styleClass="form-control input-md" required="true" requiredMessage="The Personrut field is required."/>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <p:outputLabel value="Persondv:" for="obstetricdataPKpersondv" styleClass="col-md-4 control-label" />
-                                    <div class="col-md-4">
-                                        <p:inputText id="obstetricdataPKpersondv" value="#{medicoBean.datosObstetricos.obstetricdataPK.persondv}" title="Persondv" styleClass="form-control input-md" required="true" requiredMessage="The Persondv field is required."/>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <p:outputLabel value="Recordnumber:" for="obstetricdataPKrecordnumber" styleClass="col-md-4 control-label" />
-                                    <div class="col-md-4">
-                                        <p:inputText id="obstetricdataPKrecordnumber" value="#{medicoBean.datosObstetricos.obstetricdataPK.recordnumber}" title="Recordnumber" styleClass="form-control input-md" required="true" requiredMessage="The Recordnumber field is required."/>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <p:outputLabel value="Abortion:" for="abortion" styleClass="col-md-4 control-label" />
+                                    <p:outputLabel value="Abortos" for="abortion" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
                                         <p:inputText id="abortion" value="#{medicoBean.datosObstetricos.abortion}" title="Abortion" styleClass="form-control input-md" />
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <p:outputLabel value="Vaginal:" for="vaginal" styleClass="col-md-4 control-label" />
+                                    <p:outputLabel value="Partos Vaginales" for="vaginal" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
                                         <p:inputText id="vaginal" value="#{medicoBean.datosObstetricos.vaginal}" title="Vaginal" styleClass="form-control input-md" />
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <p:outputLabel value="Caesarean:" for="caesarean" styleClass="col-md-4 control-label" />
+                                    <p:outputLabel value="Partos Cesareas" for="caesarean" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
                                         <p:inputText id="caesarean" value="#{medicoBean.datosObstetricos.caesarean}" title="Caesarean" styleClass="form-control input-md" />
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <p:outputLabel value="Lastdatepregnacy:" for="lastdatepregnacy" styleClass="col-md-4 control-label" />
+                                    <p:outputLabel value="Ultima Fecha de Embarazo" for="lastdatepregnacy" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
-                                        <p:inputText id="lastdatepregnacy" value="#{medicoBean.datosObstetricos.lastdatepregnacy}" styleClass="form-control input-md" title="Lastdatepregnacy" >
-                                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                                        </p:inputText>
+                                        <p:calendar id="lastdatepregnacy" value="#{medicoBean.datosObstetricos.lastdatepregnacy}"
+                                                    placeholder="dd/mm/aaaa" pattern="dd/MM/yyyy" navigator="true"
+                                                    required="true"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <p:outputLabel value="Rnhigherweight:" for="rnhigherweight" styleClass="col-md-4 control-label" />
+                                    <p:outputLabel value="RN Mayor Peso" for="rnhigherweight" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
                                         <p:inputText id="rnhigherweight" value="#{medicoBean.datosObstetricos.rnhigherweight}" title="Rnhigherweight" styleClass="form-control input-md" />
                                     </div>
@@ -87,7 +64,7 @@
 
 
                                 <div class="form-group">
-                                    <p:outputLabel value="Rnlowerweight:" for="rnlowerweight" styleClass="col-md-4 control-label" />
+                                    <p:outputLabel value="RN Menor Peso" for="rnlowerweight" styleClass="col-md-4 control-label" />
                                     <div class="col-md-4">
                                         <p:inputText id="rnlowerweight" value="#{medicoBean.datosObstetricos.rnlowerweight}" title="Rnlowerweight" styleClass="form-control input-md" />
                                     </div>
@@ -103,7 +80,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label"></label>
                                     <div class="col-md-4">
-                                        <p:commandButton value="Guardar" actionListener="#{fixme}" update=":growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Guardar" actionListener="#{medicoBean.guardarDatosObstetricos()}" update=":growl" styleClass="btn btn-success" />
                                         <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
                                     </div>
                                 </div>
@@ -137,7 +114,7 @@
                                             <label class="col-md-4 control-label"></label>
                                             <div class="col-md-4">
                                                 <p:commandButton value="Guardar" actionListener="#{fixme}" 
-                                                                  oncomplete="ocultar(xhr, status, args)" update=":tablanac:TablaNacimientos" styleClass="btn btn-success" />
+                                                                 oncomplete="ocultar(xhr, status, args)" update=":tablanac:TablaNacimientos" styleClass="btn btn-success" />
                                             </div>
                                         </div>
                                     </h:form>

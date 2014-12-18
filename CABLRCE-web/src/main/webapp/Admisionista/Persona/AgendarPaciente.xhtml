@@ -15,7 +15,7 @@
 
                     <div id="content" style="margin-left: 0px !important;">
                         <fieldset>
-                            <legend>Crear "nombre de página"</legend>
+                            <legend>Agendar Paciente</legend>
                             <h:form styleClass="form-horizontal" id="FormAgendarPaciente" >
                                 <p:growl id="growl" showSummary="true" life="3000"  />  
 
@@ -36,14 +36,16 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <p:outputLabel value="Prevision" for="prevision" />
-                                    <h:selectOneMenu  id="prevision" value="#{admisionistaBean.rutPro}"
-                                                      styleClass="form-control" required="true">
-                                        <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
-                                        <f:selectItems value="#{admisionistaBean.profesionales}" 
-                                                       var="profesionales" itemLabel="#{profesionales.names} #{profesionales.lastname}"
-                                                       itemValue="#{profesionales.professionalPK.rut}" />
-                                    </h:selectOneMenu>
+                                    <p:outputLabel value="Profesional" for="prevision" styleClass="col-md-4 control-label"  />
+                                    <div class="col-md-4">
+                                        <h:selectOneMenu  id="prevision" value="#{admisionistaBean.rutPro}"
+                                                          styleClass="form-control" required="true">
+                                            <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{admisionistaBean.profesionales}" 
+                                                           var="profesionales" itemLabel="#{profesionales.names} #{profesionales.lastname}"
+                                                           itemValue="#{profesionales.professionalPK.rut}" />
+                                        </h:selectOneMenu>
+                                    </div>
                                 </div>
 
 

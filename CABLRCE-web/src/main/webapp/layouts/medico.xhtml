@@ -43,20 +43,46 @@
                             </h:form>
                         </li>
                     </ul>
+
+
+
                 </div>
                 <div class="menu-section">
                     <ul>
                         <li class="option">
-                           <a href="#{appBean.baseUrl2}/Medico/ListaAgenda.xhtml">
-                                        <i class="ion-medkit"></i><span>Lista de Pacientes Diarios</span></a>
+                            <a href="#{appBean.baseUrl2}/Medico/ListaAgenda.xhtml">
+                                <i class="ion-medkit"></i><span>Lista de Pacientes Diarios</span></a>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div id="content" name="content" class="left_content" style="padding: 0 !important;">
+                <p:menubar>
+                    <p:submenu label="OBSTERICIA" icon="ui-icon-document">
+                        <p:menuitem value="Datos Obstetricos" url="#" />
+                        <p:menuitem value="Datos Ficha Obstetrica" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tratamientos y Diagnosticos" icon="ui-icon-document">
+                        <p:menuitem value="Datos Tratamiento" url="#" />
+                        <p:menuitem value="Datos Diagnosticos" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Recetas" icon="ui-icon-document">
+                        <p:menuitem value="Registrar Recetas" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Examenes" icon="ui-icon-document">
+                        <p:menuitem value="Solicitar Examenes" url="#" />
+                        <p:menuitem value="Ingresar Examenes" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Fichas Profesionales" icon="ui-icon-document">
+                        <p:menuitem value="Ver Ficha Nutricional" url="#" />
+                        <p:menuitem value="Ver Ficha Diabetica" url="#" />
+                    </p:submenu>
+
+                </p:menubar>
+                <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
                 <ui:insert name="content">
-                    
+
                 </ui:insert>
             </div>
         </div>

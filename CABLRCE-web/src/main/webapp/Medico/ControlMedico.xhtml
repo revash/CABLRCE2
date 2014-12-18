@@ -18,7 +18,7 @@
                             <p:growl id="growl" showSummary="true" life="3000"  />  
                             <legend>Control Obstetrico N° #{medicoBean.controlMedico.mediccontrolPK.controlid}      Fecha #{medicoBean.controlMedico.date}</legend>
                             <h:form styleClass="form-horizontal" id="FormControlMedico" >
-                                
+
                                 <p:accordionPanel>
                                     <p:tab title="Control Medico">
                                         <p:tabView>
@@ -111,22 +111,73 @@
 
                                             </p:tab>
                                         </p:tabView>
-                                        
+
 
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"></label>
                                             <div class="col-md-4">
-                                                <p:commandButton value="Guardar" actionListener="#{fixme}" update=":growl" styleClass="btn btn-success" />
-                                                <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
+                                                <p:commandButton value="Guardar" actionListener="#{medicoBean.guardarControlMedico()}" update=":growl" styleClass="btn btn-success" />
                                             </div>
                                         </div>
                                     </p:tab>
                                     <p:tab title="Datos Obstetricos">
-                                        
+                                        <h:form styleClass="form-horizontal" id="FormMostrarDatosObstetricos" >
+
+                                            <p:inputText type="hidden" id="obstetricdataPKpersonnationality" value="#{medicoBean.datosObstetricos.obstetricdataPK.personnationality}" title="Personnationality" styleClass="form-control input-md" required="true" requiredMessage="The Personnationality field is required."/>
+                                            <p:inputText type="hidden"  id="obstetricdataPKpersonrut" value="#{medicoBean.datosObstetricos.obstetricdataPK.personrut}" title="Personrut" styleClass="form-control input-md" required="true" requiredMessage="The Personrut field is required."/>
+                                            <p:inputText type="hidden"  id="obstetricdataPKpersondv" value="#{medicoBean.datosObstetricos.obstetricdataPK.persondv}" title="Persondv" styleClass="form-control input-md" required="true" requiredMessage="The Persondv field is required."/>
+                                            <p:inputText type="hidden" id="obstetricdataPKrecordnumber" value="#{medicoBean.datosObstetricos.obstetricdataPK.recordnumber}" title="Recordnumber" styleClass="form-control input-md" required="true" requiredMessage="The Recordnumber field is required."/>
+
+                                            <div class="form-group">
+                                                <p:outputLabel value="Abortos" for="abortion" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-4">
+                                                    <p:inputText readonly="true" id="abortion" value="#{medicoBean.datosObstetricos.abortion}" title="Abortion" styleClass="form-control input-md" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <p:outputLabel value="Partos Vaginales" for="vaginal" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-4">
+                                                    <p:inputText readonly="true" id="vaginal" value="#{medicoBean.datosObstetricos.vaginal}" title="Vaginal" styleClass="form-control input-md" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <p:outputLabel value="Partos Cesareas" for="caesarean" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-4">
+                                                    <p:inputText readonly="true" id="caesarean" value="#{medicoBean.datosObstetricos.caesarean}" title="Caesarean" styleClass="form-control input-md" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <p:outputLabel value="Ultima Fecha de Embarazo" for="lastdatepregnacy" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-4">
+                                                    <p:calendar  readonly="true" id="lastdatepregnacy" value="#{medicoBean.datosObstetricos.lastdatepregnacy}"
+                                                                placeholder="dd/mm/aaaa" pattern="dd/MM/yyyy" navigator="true"
+                                                                required="true"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <p:outputLabel  value="RN Mayor Peso" for="rnhigherweight" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-4">
+                                                    <p:inputText readonly="true" id="rnhigherweight" value="#{medicoBean.datosObstetricos.rnhigherweight}" title="Rnhigherweight" styleClass="form-control input-md" />
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <p:outputLabel value="RN Menor Peso" for="rnlowerweight" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-4">
+                                                    <p:inputText readonly="true"  id="rnlowerweight" value="#{medicoBean.datosObstetricos.rnlowerweight}" title="Rnlowerweight" styleClass="form-control input-md" />
+                                                </div>
+                                            </div>
+                                        </h:form>
                                     </p:tab>
                                     <p:tab title="Datos Ficha Obstetrica">
-                                        algo2
+                                       
                                     </p:tab>
                                 </p:accordionPanel>
 

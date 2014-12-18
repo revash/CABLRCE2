@@ -104,39 +104,57 @@ public class medicoBean {
         paciente = new Patientrecord();
         selectedAgenda = new Scheduling();
         tipoNacimientos = tipebirthsFacade.findAll();
-         nacimiento = new Databirths();
-         
+        nacimiento = new Databirths();
+
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext extContext = context.getExternalContext();
-        
+
         if (extContext.getSessionMap().get("agenda") != null) {
             agenda = (Scheduling) extContext.getSessionMap().get("agenda");
         } else {
             agenda = new Scheduling();
         }
-        
+
         if (extContext.getSessionMap().get("episodio") != null) {
             episodioClinico = (Clinicalepisode) extContext.getSessionMap().get("episodio");
         } else {
             episodioClinico = new Clinicalepisode();
         }
-        
+
         episodioClinico = new Clinicalepisode();
         if (extContext.getSessionMap().get("Control") != null) {
             controlMedico = (Mediccontrol) extContext.getSessionMap().get("Control");
-           
+
         } else {
             controlMedico = new Mediccontrol();
         }
-        
+
         if (extContext.getSessionMap().get("datosObstetricos") != null) {
             datosObstetricos = (Obstetricdata) extContext.getSessionMap().get("datosObstetricos");
-           //nacimientos = databirthsFacade.findAll();
+            //nacimientos = databirthsFacade.findAll();
         } else {
             datosObstetricos = new Obstetricdata();
             //nacimientos = databirthsFacade.findAll();
         }
 
+    }
+    
+    public void guardarControlMedico() throws IOException{
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext extContext = context.getExternalContext();controlMedico.setStatus(3);
+        Scheduling sheaux = agenda;
+        sheaux.setStatusshedulingid(bussinesFacade.getEstadoSchudling(3));
+        schedulingFacade.edit(sheaux);
+        System.out.println("paso");
+        controlMedico.setStatus(3);
+        mediccontrolFacade.edit(controlMedico);
+        ListaDePacientesDiarios = schedulingFacade.findAll();
+        extContext.getSessionMap().put("agenda", null);
+        extContext.getSessionMap().put("Control", null);
+        extContext.getSessionMap().put("episodio", null);
+        String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/Medico/ListaAgenda.xhtml"));
+        extContext.redirect(url);
+    
     }
 
     public void cargarControlMedico() throws IOException {
@@ -171,30 +189,40 @@ public class medicoBean {
         }
     }
 
-    //crear tipo de nacimiento
-    public void crearTipoNacimiento(ActionEvent event) {
+    public void guardarDatosObstetricos() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
-        RequestContext reqContext = RequestContext.getCurrentInstance();
-        boolean creado = false;
-        String formulario = "FormAgregarTipoNacimiento";
-        String dialog = "";
-        if (nacimiento.getObservations().equalsIgnoreCase("")) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Debe Ingresar Datos En Observacion", null));
-        } else {
-            DatabirthsPK dataPK = new DatabirthsPK(datosObstetricos.getObstetricdataPK().getPersonrut(), datosObstetricos.getObstetricdataPK().getPersondv(),
-                    datosObstetricos.getObstetricdataPK().getPersonnationality(), datosObstetricos.getObstetricdataPK().getRecordnumber());
-            nacimiento.setDatabirthsPK(dataPK);
-            databirthsFacade.create(nacimiento);
-            formulario = "FormAgregarTipoNacimiento";
-            dialog = "dlg1";
-            creado = true;
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos Correctamente Creados", null));
-        }
-        nacimientos = databirthsFacade.findAll();
-        nacimiento = new Databirths();
-        reqContext.addCallbackParam("formulario", formulario);
-        reqContext.addCallbackParam("creado", creado);
-        reqContext.addCallbackParam("dialog", dialog);
+        ExternalContext extContext = context.getExternalContext();
+        obstetricdataFacade.edit(datosObstetricos);
+        extContext.getSessionMap().put("datosObstetricos", datosObstetricos);
+        String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/Medico/ControlMedico.xhtml"));
+        extContext.redirect(url);
+    }
+
+    //crear tipo de nacimiento
+
+    public void crearTipoNacimiento(ActionEvent event) {
+//        FacesContext context = FacesContext.getCurrentInstance();
+//        RequestContext reqContext = RequestContext.getCurrentInstance();
+//        boolean creado = false;
+//        String formulario = "FormAgregarTipoNacimiento";
+//        String dialog = "";
+//        if (nacimiento.getObservations().equalsIgnoreCase("")) {
+//            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Debe Ingresar Datos En Observacion", null));
+//        } else {
+//            DatabirthsPK dataPK = new DatabirthsPK(datosObstetricos.getObstetricdataPK().getPersonrut(), datosObstetricos.getObstetricdataPK().getPersondv(),
+//                    datosObstetricos.getObstetricdataPK().getPersonnationality(), datosObstetricos.getObstetricdataPK().getRecordnumber());
+//            nacimiento.setDatabirthsPK(dataPK);
+//            databirthsFacade.create(nacimiento);
+//            formulario = "FormAgregarTipoNacimiento";
+//            dialog = "dlg1";
+//            creado = true;
+//            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos Correctamente Creados", null));
+//        }
+//        nacimientos = databirthsFacade.findAll();
+//        nacimiento = new Databirths();
+//        reqContext.addCallbackParam("formulario", formulario);
+//        reqContext.addCallbackParam("creado", creado);
+//        reqContext.addCallbackParam("dialog", dialog);
 
     }
 

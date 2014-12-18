@@ -16,6 +16,7 @@ import cl.entity.ProfessionalPK;
 import cl.entity.Scheduling;
 import cl.entity.Statusclinicalepisode;
 import cl.entity.Statussheduling;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -205,6 +206,13 @@ public class BussinesFacade implements BussinesFacadeLocal {
     @Override
     public List<Scheduling> getListaPorEstadoMedico(){
         Query q = em.createQuery("SELECT s FROM Scheduling s WHERE s.statusshedulingid.statusshedulingid = 2");
+        return  q.getResultList();
+    }
+    
+    @Override
+    public List<Scheduling> getListaPorEstadoTecnico(){
+        Query q = em.createQuery("SELECT s FROM Scheduling s WHERE s.statusshedulingid.statusshedulingid = 1 AND s.schedulingPK.date2 = :date");
+        q.setParameter("date", new Date());
         return  q.getResultList();
     }
    

@@ -74,5 +74,7 @@ public interface BussinesFacadeLocal {
     public boolean existenDatosObstetricos(Integer dato);
 
     public Obstetricdata getDatosObstetricos(Integer dato);
+    
+    public List<Scheduling> getListaPorEstadoTecnico();
 
 }

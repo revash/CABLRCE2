@@ -95,7 +95,7 @@ public class TecnicoParamedicoBean {
         }
         paciente = new Patientrecord();
         selectedAgenda = new Scheduling();
-        ListaDePacientesDiarios = schedulingFacade.findAll();
+        ListaDePacientesDiarios = bussinesFacade.getListaPorEstadoTecnico();
 
     }
 

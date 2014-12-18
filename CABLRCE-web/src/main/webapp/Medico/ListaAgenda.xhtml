@@ -45,6 +45,14 @@
                                             <p:inputText id="globalFilter" onkeyup="PF('tabla').filter()" style="width:300px; text-transform: uppercase;" placeholder="Ingrese palabra"/>
                                         </p:outputPanel>
                                     </f:facet>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Paciente"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.patientrecord.person.names}  #{item.patientrecord.person.lastname}">
+                                        </h:outputText>
+                                    </p:column>
+                                    
                                     <p:column filterBy="#{item.schedulingPK.date2}">
                                         <f:facet name="header">
                                             <h:outputText value="Fecha"/>
@@ -82,10 +90,9 @@
 
                                     <f:facet name="footer">
                                         <p:outputLabel value="Acciones"/>
-                                        <p:commandButton id="cmdAgregar" value="Agregar" actionListener="#{medicoBean.cargarControlMedico()}" styleClass="btn btn-default btn-xs"
+                                        <p:commandButton id="cmdAgregar" value="Ir a Control" actionListener="#{medicoBean.cargarControlMedico()}" styleClass="btn btn-default btn-xs"
                                                          />
-                                        <p:commandButton id="cmdEditar" value="Modificar" styleClass="btn btn-default btn-xs"
-                                                         />
+                                       
                                     </f:facet>
                                 </p:dataTable>
                             </div>
