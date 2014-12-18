@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <body>
+        
+        <ui:composition template="./../layouts/tecnicoParamedico.xhtml">
+            
+            <ui:define name="content">
+                <f:view>
+
+                    <div id="content" style="margin-left: 0px !important;">
+                        <fieldset>
+                            <legend>Ingresar Signos Vitales"</legend>
+                            <h:form styleClass="form-horizontal" id="FormIngresoSignosVitales" >
+                               
+                                <p:growl id="growl" showSummary="true" life="3000"  />  
+                                <div class="form-group">
+                                    <p:outputLabel value="Control ID" for="mediccontrolPKcontrolid" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText readonly="true" id="mediccontrolPKcontrolid" value="#{tecnicoParamedicoBean.controlMedico.mediccontrolPK.controlid}" title="Controlid" styleClass="form-control input-md" required="true" requiredMessage="The Controlid field is required."/>
+                                    </div>
+                                </div>
+                                <p:inputText type="hidden" readonly="true" id="mediccontrolPKepisodio" value="#{tecnicoParamedicoBean.controlMedico.mediccontrolPK.episodeid}" />
+                                <p:inputText type="hidden" readonly="true" id="mediccontrolPKrut" value="#{tecnicoParamedicoBean.controlMedico.mediccontrolPK.rut}" />
+                                <p:inputText type="hidden" readonly="true" id="mediccontrolPKdv" value="#{tecnicoParamedicoBean.controlMedico.mediccontrolPK.dv}" />
+                                <p:inputText type="hidden" readonly="true" id="mediccontrolnacinalidad" value="#{tecnicoParamedicoBean.controlMedico.mediccontrolPK.nationalityid}" />
+                                <p:inputText type="hidden" readonly="true" id="mediccontrolPKficha" value="#{tecnicoParamedicoBean.controlMedico.mediccontrolPK.recordnumber}" />
+                                <div class="form-group">
+                                    <p:outputLabel value="Fecha" for="date" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText  readonly="true" id="date" value="#{tecnicoParamedicoBean.controlMedico.date}" styleClass="form-control input-md" title="Date" >
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </p:inputText>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel value="Peso " for="weight" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="weight" value="#{tecnicoParamedicoBean.controlMedico.weight}" title="Weight" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel value="Presión Sanguinea" for="bloodpressure" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="bloodpressure" value="#{tecnicoParamedicoBean.controlMedico.bloodpressure}" title="Bloodpressure" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel value="Temperatura" for="temperature" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="temperature" value="#{tecnicoParamedicoBean.controlMedico.temperature}" title="Temperature" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel value="Pulso" for="pulse" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="pulse" value="#{tecnicoParamedicoBean.controlMedico.pulse}" title="Pulse" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel value="Talla" for="size" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="size" value="#{tecnicoParamedicoBean.controlMedico.size}" title="Size" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel value="IMC" for="imc" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="imc" value="#{tecnicoParamedicoBean.controlMedico.imc}" title="Imc" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <p:commandButton value="Guardar" actionListener="#{tecnicoParamedicoBean.ingresarSignosVitales()}" update="growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </fieldset>
+                    </div>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

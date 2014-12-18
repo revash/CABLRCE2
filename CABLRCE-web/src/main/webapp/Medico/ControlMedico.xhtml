@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../layouts/medico.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+                    <div id="content" style="margin-left: 0px !important;">
+                        <fieldset>
+                            <p:growl id="growl" showSummary="true" life="3000"  />  
+                            <legend>Control Obstetrico N° #{medicoBean.controlMedico.mediccontrolPK.controlid}      Fecha #{medicoBean.controlMedico.date}</legend>
+                            <h:form styleClass="form-horizontal" id="FormControlMedico" >
+                                
+                                <p:accordionPanel>
+                                    <p:tab title="Control Medico">
+                                        <p:tabView>
+                                            <p:tab title="Signos Vitales">
+                                                <p:inputText  type="hidden" id="mediccontrolPKcontrolid" value="#{medicoBean.controlMedico.mediccontrolPK.controlid}" title="Controlid" styleClass="form-control input-md" required="true" requiredMessage="The Controlid field is required."/>
+                                                <p:inputText type="hidden" readonly="true" id="date" value="#{medicoBean.controlMedico.date}" styleClass="form-control input-md" title="Date" >
+                                                    <f:convertDateTime pattern="MM/dd/yyyy" /></p:inputText>
+
+
+                                                <div class="form-group">
+                                                    <p:outputLabel value="Weight:" for="weight" styleClass="col-md-4 control-label" />
+                                                    <div class="col-md-4">
+                                                        <p:inputText id="weight" value="#{medicoBean.controlMedico.weight}" title="Weight" styleClass="form-control input-md" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <p:outputLabel value="Bloodpressure:" for="bloodpressure" styleClass="col-md-4 control-label" />
+                                                    <div class="col-md-4">
+                                                        <p:inputText id="bloodpressure" value="#{medicoBean.controlMedico.bloodpressure}" title="Bloodpressure" styleClass="form-control input-md" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <p:outputLabel value="Temperature:" for="temperature" styleClass="col-md-4 control-label" />
+                                                    <div class="col-md-4">
+                                                        <p:inputText id="temperature" value="#{medicoBean.controlMedico.temperature}" title="Temperature" styleClass="form-control input-md" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <p:outputLabel value="Pulse:" for="pulse" styleClass="col-md-4 control-label" />
+                                                    <div class="col-md-4">
+                                                        <p:inputText id="pulse" value="#{medicoBean.controlMedico.pulse}" title="Pulse" styleClass="form-control input-md" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <p:outputLabel value="Size:" for="size" styleClass="col-md-4 control-label" />
+                                                    <div class="col-md-4">
+                                                        <p:inputText id="size" value="#{medicoBean.controlMedico.size}" title="Size" styleClass="form-control input-md" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <p:outputLabel value="Imc:" for="imc" styleClass="col-md-4 control-label" />
+                                                    <div class="col-md-4">
+                                                        <p:inputText id="imc" value="#{medicoBean.controlMedico.imc}" title="Imc" styleClass="form-control input-md" />
+                                                    </div>
+                                                </div>
+                                            </p:tab>
+                                            <p:tab title="Historia Medica">
+
+                                                <div class="form-group">
+                                                    <h3>Historia</h3>
+                                                    <div class="col-md-4">
+                                                        <p:inputTextarea id="history" value="#{medicoBean.controlMedico.history}" title="History"  
+                                                                         rows="10" cols="120" counter="display" maxlength="1000" counterTemplate="{0} Caracteres Restantes." autoResize="false" />
+                                                        <h:outputText id="display" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <h3>Examen Fisico</h3>
+                                                    <div class="col-md-4">
+                                                        <p:inputTextarea id="physicalexamination" value="#{medicoBean.controlMedico.physicalexamination}" title="Physicalexamination" 
+                                                                         rows="10" cols="120" counter="display1" maxlength="1000" counterTemplate="{0} Caracteres Restantes." autoResize="false" />
+                                                        <h:outputText id="display1" />
+                                                    </div>
+                                                </div>
+                                            </p:tab>
+                                            <p:tab title="Observaciones">
+                                                <div class="form-group">
+                                                    <h3>Indicaciones</h3>
+                                                    <div class="col-md-4">
+                                                        <p:inputTextarea id="indications" value="#{medicoBean.controlMedico.indications}" title="Indications" 
+                                                                         rows="10" cols="120" counter="display2" maxlength="1000" counterTemplate="{0} Caracteres Restantes." autoResize="false" />
+                                                        <h:outputText id="display2" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <h3>Observaciones</h3>
+                                                    <div class="col-md-4">
+                                                        <p:inputTextarea id="observations" value="#{medicoBean.controlMedico.observations}" title="Observations"
+                                                                         rows="10" cols="120" counter="display3" maxlength="1000" counterTemplate="{0} Caracteres Restantes." autoResize="false" />
+                                                        <h:outputText id="display3" />
+                                                    </div>
+                                                </div>
+
+                                            </p:tab>
+                                        </p:tabView>
+                                        
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"></label>
+                                            <div class="col-md-4">
+                                                <p:commandButton value="Guardar" actionListener="#{fixme}" update=":growl" styleClass="btn btn-success" />
+                                                <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
+                                            </div>
+                                        </div>
+                                    </p:tab>
+                                    <p:tab title="Datos Obstetricos">
+                                        
+                                    </p:tab>
+                                    <p:tab title="Datos Ficha Obstetrica">
+                                        algo2
+                                    </p:tab>
+                                </p:accordionPanel>
+
+
+
+                            </h:form>
+                        </fieldset>
+                    </div>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

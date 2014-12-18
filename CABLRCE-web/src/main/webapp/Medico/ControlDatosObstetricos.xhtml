@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../layouts/medico.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+                    <div id="content" style="margin-left: 0px !important;">
+                        <fieldset>
+                            <legend>Datos Obstetricos</legend>
+                            <p:growl id="growl" showSummary="true" life="3000"  />  
+                            <h:form styleClass="form-horizontal" id="FormCreacionDatosObstetricos" >
+                               
+                                <div class="form-group">
+                                    <p:outputLabel value="Personnationality:" for="obstetricdataPKpersonnationality" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="obstetricdataPKpersonnationality" value="#{medicoBean.datosObstetricos.obstetricdataPK.personnationality}" title="Personnationality" styleClass="form-control input-md" required="true" requiredMessage="The Personnationality field is required."/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Personrut:" for="obstetricdataPKpersonrut" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="obstetricdataPKpersonrut" value="#{medicoBean.datosObstetricos.obstetricdataPK.personrut}" title="Personrut" styleClass="form-control input-md" required="true" requiredMessage="The Personrut field is required."/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Persondv:" for="obstetricdataPKpersondv" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="obstetricdataPKpersondv" value="#{medicoBean.datosObstetricos.obstetricdataPK.persondv}" title="Persondv" styleClass="form-control input-md" required="true" requiredMessage="The Persondv field is required."/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Recordnumber:" for="obstetricdataPKrecordnumber" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="obstetricdataPKrecordnumber" value="#{medicoBean.datosObstetricos.obstetricdataPK.recordnumber}" title="Recordnumber" styleClass="form-control input-md" required="true" requiredMessage="The Recordnumber field is required."/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Abortion:" for="abortion" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="abortion" value="#{medicoBean.datosObstetricos.abortion}" title="Abortion" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Vaginal:" for="vaginal" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="vaginal" value="#{medicoBean.datosObstetricos.vaginal}" title="Vaginal" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Caesarean:" for="caesarean" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="caesarean" value="#{medicoBean.datosObstetricos.caesarean}" title="Caesarean" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Lastdatepregnacy:" for="lastdatepregnacy" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="lastdatepregnacy" value="#{medicoBean.datosObstetricos.lastdatepregnacy}" styleClass="form-control input-md" title="Lastdatepregnacy" >
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </p:inputText>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Rnhigherweight:" for="rnhigherweight" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="rnhigherweight" value="#{medicoBean.datosObstetricos.rnhigherweight}" title="Rnhigherweight" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <p:outputLabel value="Rnlowerweight:" for="rnlowerweight" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="rnlowerweight" value="#{medicoBean.datosObstetricos.rnlowerweight}" title="Rnlowerweight" styleClass="form-control input-md" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <p:commandButton value="AgregarNacimiento" onclick="PF('dlg1').show()" styleClass="btn btn-success" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <p:commandButton value="Guardar" actionListener="#{fixme}" update=":growl" styleClass="btn btn-success" />
+                                        <p:commandButton value="Cancelar" onclick="volver();" styleClass="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </fieldset>
+                        <p:dialog header="Crear Tipo Nacimiento" widgetVar="dlg1" 
+                                  width="600" height="400" resizable="false" 
+                                  position="center">
+                            <div id="content" style="margin-left: 0px !important;">
+                                <fieldset>
+                                    <h:form styleClass="form-horizontal" id="FormAgregarTipoNacimiento" >
+                                        <div class="form-group">
+                                            <p:outputLabel value="Observations:" for="observations" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-4">
+                                                <p:inputTextarea id="observations" value="#{medicoBean.nacimiento.observations}" title="Observations"
+                                                                 styleClass="form-control input-md"  rows="5" cols="20"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p:outputLabel value="Prevision" for="prevision" />
+                                            <h:selectOneMenu  id="prevision" value="#{medicoBean.nacimiento.tipebirthid}"
+                                                              styleClass="form-control" required="true" converter="dataBirthConverter">
+                                                <f:selectItem itemLabel="Seleccione..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{medicoBean.tipoNacimientos}" 
+                                                               var="nacimiento" itemLabel="#{nacimiento.tipebirthdesc}"
+                                                               itemValue="#{nacimiento}" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"></label>
+                                            <div class="col-md-4">
+                                                <p:commandButton value="Guardar" actionListener="#{fixme}" 
+                                                                  oncomplete="ocultar(xhr, status, args)" update=":tablanac:TablaNacimientos" styleClass="btn btn-success" />
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </fieldset>
+                            </div>
+                        </p:dialog>            
+
+                        <h:form id="tablanac">
+                            <div class="content-wrapper">  
+                                <p:dataTable 
+                                    id="TablaNacimientos"
+                                    value="#{medicoBean.nacimientos}" var="item" 
+                                    rows="10" paginator="true" 
+                                    paginatorPosition="bottom"
+                                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15"
+                                    widgetVar="tabla"
+                                    emptyMessage="No se encontraron resultados">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Observaciones"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.observations}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Tipo de Parto"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.tipebirthid.tipebirthdesc}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                        </h:form>
+                    </div>
+                </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

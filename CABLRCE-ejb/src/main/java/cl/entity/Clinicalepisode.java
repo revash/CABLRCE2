@@ -69,6 +69,8 @@ public class Clinicalepisode implements Serializable {
     private Integer hyphotesisseq;
     @Column(name = "examreqseq")
     private Integer examreqseq;
+    @Column(name = "specialityid")
+    private Integer SpecialityId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clinicalepisode")
     private List<Mediccontrol> mediccontrolList;
     @JoinColumn(name = "statusepisodeid", referencedColumnName = "statusepisodeid")
@@ -196,6 +198,14 @@ public class Clinicalepisode implements Serializable {
 
     public void setPatientrecord(Patientrecord patientrecord) {
         this.patientrecord = patientrecord;
+    }
+
+    public Integer getSpecialityId() {
+        return SpecialityId;
+    }
+
+    public void setSpecialityId(Integer SpecialityId) {
+        this.SpecialityId = SpecialityId;
     }
 
     @XmlTransient

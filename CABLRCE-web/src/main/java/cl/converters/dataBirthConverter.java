@@ -6,7 +6,7 @@
 
 package cl.converters;
 
-import cl.entity.Commune;
+import cl.entity.Tipebirths;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -17,15 +17,15 @@ import javax.faces.convert.FacesConverter;
  *
  * @author AndresEduardo
  */
-@FacesConverter(value = "CommuneConverter", forClass = Commune.class)
-public class communeConverter implements Converter{
+@FacesConverter(value = "dataBirthConverter", forClass = Tipebirths.class)
+public class dataBirthConverter implements Converter{
 
-    @Override
+     @Override
     public Object getAsObject(FacesContext context, UIComponent arg1, String arg2) throws ConverterException {
         if (arg2.trim().equals("")) {
             return null;
         } else {
-            return new Commune(Integer.parseInt(arg2));
+            return new Tipebirths(Integer.parseInt(arg2));
         }
     }
 
@@ -34,7 +34,7 @@ public class communeConverter implements Converter{
         if (arg2 == null || arg2.equals("")) {
             return "";
         } else {
-            return String.valueOf(((Commune) arg2).getCommuneid());
+            return String.valueOf(((Tipebirths) arg2).getTipebirthid());
         }
     }
     

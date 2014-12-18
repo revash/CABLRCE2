@@ -12,7 +12,6 @@ import cl.session.MediccontrolFacade;
 import cl.session.MediccontrolFacadeLocal;
 import java.io.IOException;
 import java.util.List;
-import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;

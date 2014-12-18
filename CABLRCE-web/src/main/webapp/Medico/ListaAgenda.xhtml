@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+         <ui:composition template="./../layouts/medico.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <div id="content" style="margin-left:0px !important;">
+                        <h:form>
+                            <div class="menubar">
+                                <div class="sidebar-toggler visible-xs">
+                                    <i class="ion-navicon"></i>
+                                </div>
+                                <div class="page-title">
+                                    Lista Pacientes Diarios
+                                </div>
+
+                            </div>
+                            <div class="content-wrapper">  
+                                <p:dataTable 
+                                    id="ListaPacientesDiariosTecnico"
+                                    value="#{medicoBean.listaDePacientesDiarios}" var="item" 
+                                    rows="10" paginator="true" 
+                                    paginatorPosition="bottom"
+                                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15"
+                                    widgetVar="tabla"
+                                    selectionMode="single"
+                                    selection="#{medicoBean.selectedAgenda}"
+                                    rowKey="#{item.schedulingPK}"
+                                    filteredValue="#{medicoBean.filterListaPacientes}"
+                                    emptyMessage="No se encontraron resultados">
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Buscar en todas las Columnas" />
+                                            <p:inputText id="globalFilter" onkeyup="PF('tabla').filter()" style="width:300px; text-transform: uppercase;" placeholder="Ingrese palabra"/>
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:column filterBy="#{item.schedulingPK.date2}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Fecha"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.schedulingPK.date2}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column filterBy="#{item.schedulingPK.time2}">
+                                        <f:facet name="header">
+                                            <h:outputText value="hora"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.schedulingPK.time2}">
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column filterBy="#{item.statusshedulingid}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Estado"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.statusshedulingid.statusshedulingname}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.professional}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Asignado A"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.professional.names} #{item.professional.lastname}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.patientrecord}">
+                                        <f:facet name="header">
+                                            <h:outputText value="FICHA"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.patientrecord.patientrecordPK.recordnumber}"/>
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        <p:outputLabel value="Acciones"/>
+                                        <p:commandButton id="cmdAgregar" value="Agregar" actionListener="#{medicoBean.cargarControlMedico()}" styleClass="btn btn-default btn-xs"
+                                                         />
+                                        <p:commandButton id="cmdEditar" value="Modificar" styleClass="btn btn-default btn-xs"
+                                                         />
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </h:form>
+
+                    </div>
+                </f:view>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

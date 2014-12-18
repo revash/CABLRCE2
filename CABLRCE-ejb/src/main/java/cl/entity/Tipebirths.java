@@ -42,8 +42,8 @@ public class Tipebirths implements Serializable {
     @Size(max = 100)
     @Column(name = "tipebirthdesc")
     private String tipebirthdesc;
-    @OneToMany(mappedBy = "tipebirthid")
-    private List<Databirths> databirthsList;
+//    @OneToMany(mappedBy = "tipebirthid")
+//    private List<Databirths> databirthsList;
 
     public Tipebirths() {
     }
@@ -68,14 +68,14 @@ public class Tipebirths implements Serializable {
         this.tipebirthdesc = tipebirthdesc;
     }
 
-    @XmlTransient
-    public List<Databirths> getDatabirthsList() {
-        return databirthsList;
-    }
-
-    public void setDatabirthsList(List<Databirths> databirthsList) {
-        this.databirthsList = databirthsList;
-    }
+//    @XmlTransient
+//    public List<Databirths> getDatabirthsList() {
+//        return databirthsList;
+//    }
+//
+//    public void setDatabirthsList(List<Databirths> databirthsList) {
+//        this.databirthsList = databirthsList;
+//    }
 
     @Override
     public int hashCode() {

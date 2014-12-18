@@ -56,8 +56,8 @@ public class Obstetricdata implements Serializable {
     private Integer rnhigherweight;
     @Column(name = "rnlowerweight")
     private Integer rnlowerweight;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "obstetricdata")
-    private Databirths databirths;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "obstetricdata")
+//    private Databirths databirths;
 
     public Obstetricdata() {
     }
@@ -126,13 +126,13 @@ public class Obstetricdata implements Serializable {
         this.rnlowerweight = rnlowerweight;
     }
 
-    public Databirths getDatabirths() {
-        return databirths;
-    }
-
-    public void setDatabirths(Databirths databirths) {
-        this.databirths = databirths;
-    }
+//    public Databirths getDatabirths() {
+//        return databirths;
+//    }
+//
+//    public void setDatabirths(Databirths databirths) {
+//        this.databirths = databirths;
+//    }
 
     @Override
     public int hashCode() {

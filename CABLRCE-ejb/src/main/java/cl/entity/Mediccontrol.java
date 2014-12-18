@@ -90,6 +90,8 @@ public class Mediccontrol implements Serializable {
     private Integer correlativerecipies;
     @Column(name = "correlativetreatment")
     private Integer correlativetreatment;
+    @Column(name = "status")
+    private Integer status;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "mediccontrol")
     private List<Recipe> recipeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "mediccontrol")
@@ -126,8 +128,8 @@ public class Mediccontrol implements Serializable {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date date2) {
+        this.date = date2;
     }
 
     public Double getWeight() {
@@ -166,8 +168,8 @@ public class Mediccontrol implements Serializable {
         return size;
     }
 
-    public void setSize(Double size) {
-        this.size = size;
+    public void setSize(Double size2) {
+        this.size = size2;
     }
 
     public Double getImc() {
@@ -225,6 +227,16 @@ public class Mediccontrol implements Serializable {
     public void setCorrelativetreatment(Integer correlativetreatment) {
         this.correlativetreatment = correlativetreatment;
     }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+    
+    
 
     @XmlTransient
     public List<Recipe> getRecipeList() {

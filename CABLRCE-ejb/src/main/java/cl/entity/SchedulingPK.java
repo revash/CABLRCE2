@@ -24,12 +24,12 @@ import javax.validation.constraints.Size;
 public class SchedulingPK implements Serializable {
     @Basic(optional = false)
     @NotNull
-    @Column(name = "date2")
+    @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date date2;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "time2")
+    @Column(name = "hora")
     @Temporal(TemporalType.TIME)
     private Date time2;
     @Basic(optional = false)

@@ -30,6 +30,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -112,6 +114,14 @@ public class ProfessionalBean {
                     String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/layouts/admisionista.xhtml"));
                     extContext.redirect(url);
                 }
+                if (professionalAux.getRoleid().getRoleid() == 3) {
+                    String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/layouts/tecnicoParamedico.xhtml"));
+                    extContext.redirect(url);
+                }
+                if (professionalAux.getRoleid().getRoleid() == 5) {
+                    String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/layouts/medico.xhtml"));
+                    extContext.redirect(url);
+                }
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en Credenciales2", "Datos Invalidos"));
             }
@@ -189,6 +199,15 @@ public class ProfessionalBean {
         String url = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/Mantenedores/CABL/Professionals.xhtml"));
         extContext.redirect(url);
             
+    }
+    
+     public void logOut() throws IOException {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+        session.invalidate();
+        RequestContext context = RequestContext.getCurrentInstance();
+        appBean appBean = new appBean();
+        context.addCallbackParam("url2", appBean.getBaseUrl2() + "/login.xhtml");
     }
 
 //get y set
